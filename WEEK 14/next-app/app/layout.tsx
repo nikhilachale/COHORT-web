@@ -27,6 +27,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <div className="flex justify-between p-5 border-b border-slate-400">
+          <div className=" text-xl text-slate-700  "> Next JS</div>
+          <div className=" text-xl text-slate-700 "> lets try </div>
+        </div>
         {children}
       </body>
     </html>
