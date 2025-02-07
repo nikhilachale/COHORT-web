@@ -1,64 +1,52 @@
-import { motion ,useScroll} from "motion/react"
+import { motion, useScroll } from "motion/react"
 
 
 
 
 function App() {
-motion
- const {scrollYProgress}=useScroll()
+  motion
+  const { scrollYProgress } = useScroll()
   return (
     <>
-      {/* <motion.div className="bg-green-700 h-44 rounded-md w-44 flex items-center justify-center border-3 border-yellow-200"
+      <motion.div className="bg-green-700 h-44 rounded-md w-44 flex items-center justify-center border-3 border-yellow-200"
         animate={{
-          x: [0,500,500,0,0],
-          y:[0,0,300,300,0],
-          rotate: [0,360,0,-360,0],
-
-
+          x: [0, 500, 500, 0, 0],
+          y: [0, 0, 300, 300, 0],
+          rotate: [0, 360, 0, -360, 0],
         }}
         transition={{
           duration: 5,
           delay: 2,
           ease: "easeIn"
-        }}
-
-      >
+        }} >
         nikhil achale</motion.div>
-
       <motion.div className="bg-red-300 h-44 my-4 w-44 rounded-full flex items-center justify-center border-2 border-slate-500"
-      whileHover={
-        {
-          backgroundColor:'#ffff',
+        whileHover={
+          {
+            backgroundColor: '#ffff',
+          }
         }
-
-      }
-      drag
-      dragConstraints={{
-        left:0,
-        top:0,
-
-      }
-
-      }
-      whileDrag={
-        {
-          backgroundColor:"GrayText",
-          scale:1.2
+        drag
+        dragConstraints={{
+          left: 0,
+          top: 0,
         }
-      }
-        
-        
-
-      >
-        nikhil achale</motion.div> */}
- <motion.div 
+        }
+        whileDrag={
+          {
+            backgroundColor: "GrayText",
+            scale: 1.2
+          }
+        }>
+        nikhil achale</motion.div>
+      <motion.div
         style={{
-          scaleX:scrollYProgress
+          scaleX: scrollYProgress
         }}
         className="fixed top-0 left-0 origin-top-left bg-red-500 h-10 w-full"> </motion.div>
 
       <div className=" bg-black h-fit w-screen ">
-       
+
         <h1 className="text-4xl text-slate-300  text-center pt-20 py-3">
           learning frammer motion
         </h1>
