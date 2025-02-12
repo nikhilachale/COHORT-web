@@ -29,7 +29,7 @@ export const Blogcard = ({ id,authorName, title, content, publishDate }: Blogcar
             <div className="text-xl font-semibold">
                 {title}
             </div>
-            <div className="text-lg font-normal">
+            <div className="text-base text-slate-600 font-extralight">
                 {content.slice(0, 100)}....
             </div>
             <div className="text-slate-400 text-sm font-light pt-2">
