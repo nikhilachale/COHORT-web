@@ -188,20 +188,45 @@ blogRouter.get('/:id',async (c) => {
 
 });
 
-blogRouter.delete('/', async (c) => {
+// blogRouter.delete('/', async (c) => {
+//     const prisma = new PrismaClient({
+//         datasourceUrl: c.env.DATABASE_URL,
+//     }).$extends(withAccelerate());
+
+//     try {
+//         // Delete all blogs where "published" is false
+//         const deletedBlogs = await prisma.blog.deleteMany({
+//             where: { published: false }
+//         });
+
+//         return c.json({ message: "Unpublished blogs deleted!", count: deletedBlogs.count });
+//     } catch (e) {
+//         console.error("Error deleting blogs:", e);
+//         return c.json({ error: "Internal Server Error" }, 500);
+//     }
+// });
+
+
+blogRouter.delete('/:id', async (c) => {
     const prisma = new PrismaClient({
         datasourceUrl: c.env.DATABASE_URL,
     }).$extends(withAccelerate());
 
+    const id = parseInt(c.req.param("id")); // Get ID from URL params
+
+    if (isNaN(id)) {
+        return c.json({ error: "Invalid ID" }, 400);
+    }
+
     try {
-        // Delete all blogs where "published" is false
-        const deletedBlogs = await prisma.blog.deleteMany({
-            where: { published: false }
+        const deletedBlog = await prisma.blog.delete({
+            where: { id },
         });
 
-        return c.json({ message: "Unpublished blogs deleted!", count: deletedBlogs.count });
+        return c.json({ message: "Blog deleted!", deletedBlog });
     } catch (e) {
-        console.error("Error deleting blogs:", e);
-        return c.json({ error: "Internal Server Error" }, 500);
+        console.error("Error deleting blog:", e);
+        return c.json({ error: "Blog not found or Internal Server Error" }, 500);
     }
 });
+
